@@ -1,2 +1,2 @@
 # GBX-Toolkit
-Toolkit for the GBX DeFi
+Toolkit for the SG-Finance
