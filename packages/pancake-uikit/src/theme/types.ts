@@ -57,6 +57,7 @@ export type Colors = {
   background: string;
   backgroundDisabled: string;
   backgroundAlt: string;
+  menuicon: string;
   text: string;
   textDisabled: string;
   textSubtle: string;
@@ -77,3 +78,7 @@ export type ZIndices = {
   dropdown: number;
   modal: number;
 };
+
+export type Images = {
+  contentBackground: string; 
+}

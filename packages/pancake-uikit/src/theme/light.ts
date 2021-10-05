@@ -9,12 +9,14 @@ import { light as lightNav } from "../widgets/Menu/theme";
 import { light as lightModal } from "../widgets/Modal/theme";
 import base from "./base";
 import { lightColors } from "./colors";
+import { lightImages } from "./images";
 
 const lightTheme: DefaultTheme = {
   ...base,
   isDark: false,
   alert: lightAlert,
   colors: lightColors,
+  images: lightImages,
   card: lightCard,
   toggle: lightToggle,
   nav: lightNav,

@@ -27,7 +27,6 @@ const StyledNav = styled.nav<{ showMenu: boolean }>`
   width: 100%;
   height: ${MENU_HEIGHT}px;
   background-color: ${({ theme }) => theme.nav.background};
-  border-bottom: solid 2px rgba(133, 133, 133, 0.1);
   z-index: 20;
   transform: translate3d(0, 0, 0);
 `;
@@ -37,9 +36,17 @@ const BodyWrapper = styled.div`
   display: flex;
 `;
 
-const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
+const MainContent = styled.div<{showMenu: boolean }>`
   flex-grow: 1;
   margin-top: ${({ showMenu }) => (showMenu ? `${MENU_HEIGHT}px` : 0)};
+  transition: margin-top 0.2s, margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate3d(0, 0, 0);
+  max-width: 100%;
+`;
+
+const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
+  flex-grow: 1;
+  // margin-top: ${({ showMenu }) => (showMenu ? `${MENU_HEIGHT}px` : 0)};
   transition: margin-top 0.2s, margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translate3d(0, 0, 0);
   max-width: 100%;
@@ -48,7 +55,7 @@ const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
     margin-left: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
     max-width: ${({ isPushed }) => `calc(100% - ${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px)`};
   }
-`;
+  `;
 
 const MobileOnlyOverlay = styled(Overlay)`
   position: fixed;
@@ -111,17 +118,6 @@ const Menu: React.FC<NavProps> = ({
 
   return (
     <Wrapper>
-      <StyledNav showMenu={showMenu}>
-        <Logo
-          isPushed={isPushed}
-          togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
-          isDark={isDark}
-          href={homeLink?.href ?? "/"}
-        />
-        <Flex>
-          {globalMenu} {userMenu}
-        </Flex>
-      </StyledNav>
       <BodyWrapper>
         <Panel
           isPushed={isPushed}
@@ -136,8 +132,22 @@ const Menu: React.FC<NavProps> = ({
           pushNav={setIsPushed}
           links={links}
         />
+
         <Inner isPushed={isPushed} showMenu={showMenu}>
+          <StyledNav showMenu={showMenu}>
+            <Logo
+              isPushed={isPushed}
+              togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
+              isDark={isDark}
+              href={homeLink?.href ?? "/"}
+            />
+            <Flex>
+              {globalMenu} {userMenu}
+            </Flex>
+          </StyledNav>
+          <MainContent showMenu={showMenu}>
           {children}
+          </MainContent>
         </Inner>
         <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation" />
       </BodyWrapper>

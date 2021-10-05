@@ -30,12 +30,13 @@ const MenuEntry = styled.div<Props>`
   cursor: pointer;
   display: flex;
   align-items: center;
-  height: ${MENU_ENTRY_HEIGHT}px;
-  padding: ${({ secondary }) => (secondary ? "0 32px" : "0 16px")};
-  font-size: ${({ secondary }) => (secondary ? "14px" : "16px")};
+  // height: ${MENU_ENTRY_HEIGHT}px;
+  height: ${({ secondary }) => (secondary ? "32px" : `${MENU_ENTRY_HEIGHT}px`)};
+  padding: ${({ secondary }) => (secondary ? "0 32px 0 80px" : "0 30px")};
+  font-size: ${({ secondary }) => (secondary ? "14px" : "14px")};
   background-color: ${({ secondary, theme }) => (secondary ? theme.colors.background : "transparent")};
   color: ${({ theme }) => theme.colors.textSubtle};
-  box-shadow: ${({ isActive, theme }) => (isActive ? `inset 4px 0px 0px ${theme.colors.primary}` : "none")};
+  // box-shadow: ${({ isActive, theme }) => (isActive ? `inset 4px 0px 0px ${theme.colors.primary}` : "none")};
 
   a {
     display: flex;
@@ -48,9 +49,9 @@ const MenuEntry = styled.div<Props>`
     fill: ${({ theme }) => theme.colors.menuicon};
   }
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.tertiary};
-  }
+  // &:hover {
+  //   background-color: ${({ theme }) => theme.colors.tertiary};
+  // }
 
   // Safari fix
   flex-shrink: 0;

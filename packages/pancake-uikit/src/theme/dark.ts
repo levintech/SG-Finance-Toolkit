@@ -9,12 +9,14 @@ import { dark as darkModal } from "../widgets/Modal/theme";
 import { dark as darkTooltip } from "../components/Tooltip/theme";
 import base from "./base";
 import { darkColors } from "./colors";
+import { darkImages } from "./images";
 
 const darkTheme: DefaultTheme = {
   ...base,
   isDark: true,
   alert: darkAlert,
   colors: darkColors,
+  images: darkImages,
   card: darkCard,
   toggle: darkToggle,
   nav: darkNav,

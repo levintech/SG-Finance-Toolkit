@@ -47,7 +47,7 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
               icon={iconElement}
               label={entry.label}
               status={entry.status}
-              initialOpenState={initialOpenState}
+              initialOpenState={true}
               className={calloutClass}
               isActive={entry.items.some((item) => item.href === location.pathname)}
             >
